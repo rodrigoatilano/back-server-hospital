@@ -1,0 +1,1 @@
+module.exports.SEED = 'este-es-una-semilla-para-el-token';
