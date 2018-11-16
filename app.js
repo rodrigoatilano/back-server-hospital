@@ -17,8 +17,13 @@ app.use(bodyParser.json());
 
 // Importar rutas
 var appRoutes = require('./routes/app');
+var hospitalRoutes = require('./routes/hospital');
+var medicoRoutes = require('./routes/medico');
 var usuariosRoutes = require('./routes/usuario');
+var busquedaRoutes = require('./routes/busqueda');
+var uploadRoutes = require('./routes/upload');
 var loginRoutes = require('./routes/login');
+var imagenesRoutes = require('./routes/imagenes');
 
 
 // Conexion a ala base de datos
@@ -49,15 +54,15 @@ mongoose.connection.openUri('mongodb://localhost:27017/hospitalDB', (err, resp) 
 // });
 // connection.end();
 
-
-
-
 // Rutas
-app.use('/login', loginRoutes);
 app.use('/usuario', usuariosRoutes);
+app.use('/hospital', hospitalRoutes);
+app.use('/medico', medicoRoutes);
+app.use('/login', loginRoutes);
+app.use('/busqueda', busquedaRoutes);
+app.use('/upload', uploadRoutes);
+app.use('/img', imagenesRoutes);
 app.use('/', appRoutes); // -> Midelware
-
-
 
 // Escuchar peticiones
 app.listen(3000, () => {
